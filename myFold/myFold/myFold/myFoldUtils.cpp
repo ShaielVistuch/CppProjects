@@ -5,10 +5,10 @@
 using std::cout;
 using std::endl;
 
-void printMultiplicationTable(unsigned int maxRows, unsigned int maxCols) {
-    int result = 0;
-    for (int row = 1; row < maxRows + 1; row++) {
-        for (int col = 1; col < maxCols + 1; col++) {
+void printMultiplicationTable(unsigned int maxCols, unsigned int maxRows) {
+    unsigned int result = 0;
+    for (int row = 1; row <= maxRows; row++) {
+        for (int col = 1; col <= maxCols; col++) {
             result = row * col;
             if (result < 10) {
                 cout << result << "\t  ";
