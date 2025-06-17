@@ -1,8 +1,8 @@
-#include "myFold.h"
+#include "myFoldUtils.h"
 
 int main() {
-    const int maxCols = 12;
-    const int maxRows = 20;
+    const unsigned int maxCols = 11;
+    const unsigned int maxRows = 11;
     printMultiplicationTable(maxCols, maxRows);
     return 0;
 }
