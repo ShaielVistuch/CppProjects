@@ -16,6 +16,6 @@ void printMultiplicationTable(unsigned int maxRows, unsigned int maxCols) {
                 cout << result << "\t ";
             }
         }
-        std::cout << std::endl;
+        cout << endl;
     }
 }
