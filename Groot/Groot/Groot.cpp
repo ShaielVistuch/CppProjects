@@ -1,19 +1,12 @@
+#include "groot.h"
+#include <cmath>
 #include <iostream>
-#include <math.h>
 #include <string>
+using std::cin;
+using std::cout;
 
 int main() {
-    using namespace std;
-    std::string number;
-    cout << "Enter a non-negetive number" << endl;
-    cin >> number;
-    for (char c : number) {
-        if (!isdigit(c)) {
-            std::cout << "Please enter a positive number! Exiting..." << endl;
-            return 1;
-        }
-    }
-    std::cout << "The square root of " << number << " is "
-              << sqrt(stoi(number));
+    double number = getNonNegativeNumberFromUser();
+    cout << "The square root of " << number << " is " << sqrt(number);
     return 0;
 }
