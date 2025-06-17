@@ -1,5 +1,19 @@
 #include "primeUtils.h"
 
-int checkIfPrime(int number) {
+#include <cmath>
+#include <iostream>
 
+using std::cout;
+using std::endl;
+
+bool checkIfPrime(int number) {
+    if (number <= 1) {
+        return false;
+    }
+    for (int i = 2; i <= sqrt(number); i++) {
+        if (number % i == 0) {
+            return false;
+        }
+    }
+    return true;
 }
