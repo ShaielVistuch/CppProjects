@@ -4,14 +4,15 @@
 #include <iostream>
 #include <string>
 
+using std::cerr;
 using std::cin;
 using std::cout;
 using std::endl;
 using std::string;
 
-void returnArrayOfPrimes(int count, int* ptr) {
-    const int smallestPrimeNumber = 2;
-    int numberToCheck = smallestPrimeNumber;
+void fillArrayWithPrimes(int count, int* ptr) {
+    const int SMALLEST_PRIME = 2;
+    int numberToCheck = SMALLEST_PRIME;
     while (count != 0) {
         if (checkIfPrime(numberToCheck)) {
             *ptr = numberToCheck;
@@ -22,14 +23,14 @@ void returnArrayOfPrimes(int count, int* ptr) {
     }
 }
 
-void printArrayContent(int* poinerToArray, int numOfElements) {
+void printArray(int* poinerToArray, int numOfElements) {
     cout << "Printing array contents: " << endl;
-    for (int element = 0; element < numOfElements; element++) {
-        cout << poinerToArray[element] << "  " << endl;
+    for (int i = 0; i < numOfElements; i++) {
+        cout << poinerToArray[i] << "  " << endl;
     }
 }
 
-int getIntegerFromUser() {
+int getNumberOfPrimesFromUser() {
     string inputNumber = "";
     cout << "Enter number of prime numbers you wish to find: " << endl;
     cin >> inputNumber;
@@ -40,8 +41,9 @@ int getIntegerFromUser() {
         }
         return numberOfPrimes;
     } catch (std::invalid_argument& ex) {
-        cout << "You have entered an invalid number" << endl
-             << ex.what() << endl << "Exiting...";
-        exit(1);
+        cerr << "You have entered an invalid number" << endl
+             << ex.what() << endl
+             << "Exiting...";
+        throw ex;
     }
 }
