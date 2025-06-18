@@ -3,9 +3,6 @@
 #include <cmath>
 #include <iostream>
 
-using std::cout;
-using std::endl;
-
 bool checkIfPrime(int number) {
     if (number <= 1) {
         return false;
