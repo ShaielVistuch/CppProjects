@@ -123,9 +123,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\Downloads\primtUtils.cpp" />
     <ClCompile Include="bumbleBee.cpp" />
     <ClCompile Include="bumbleBeeUtils.cpp" />
+    <ClCompile Include="primeUtils.cpp" />
     <ClCompile Include="primeUtils.h" />
   </ItemGroup>
   <ItemGroup>

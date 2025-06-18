@@ -21,11 +21,11 @@
     <ClCompile Include="bumbleBeeUtils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Downloads\primtUtils.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="primeUtils.h">
       <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="primeUtils.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
