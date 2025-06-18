@@ -3,7 +3,7 @@
 #include <iostream>
 
 int main() {
-    int count = 5;
+    int count = 0;
     count = getIntegerFromUser();
     int* primeArrayPointer = (int*)(malloc(count * sizeof(int)));
     returnArrayOfPrimes(count, primeArrayPointer);
