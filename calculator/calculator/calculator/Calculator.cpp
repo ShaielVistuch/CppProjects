@@ -2,28 +2,27 @@
 
 #include <iostream>
 
-using std::cout;
+using std::cerr;
 using std::endl;
 
-enum ExitValues { 
-    DivisionByZero = 1, 
-    UnsupportedOperator 
-};
+double Calculator::add(double num1, double num2) { 
+    return num1 + num2; 
+}
 
-double Calculator::add(double num1, double num2) { return num1 + num2; }
-double Calculator::subtract(double num1, double num2) { return num1 - num2; }
-double Calculator::multiply(double num1, double num2) { return num1 * num2; }
+double Calculator::subtract(double num1, double num2) { 
+    return num1 - num2; 
+}
+
+double Calculator::multiply(double num1, double num2) { 
+    return num1 * num2; 
+}
+
 double Calculator::divide(double num1, double num2) {
-    try {
-        if (!num2) {
-            throw 1;
-        }
-        return (num1 / num2);
-    } catch (int num) {
-        cout << "Can't divide " << num1 << " by zero!" << endl
-             << "Exiting... " << endl;
-        exit(DivisionByZero);
+    if (num2 == 0) {
+        cerr << "Can't divide by zero!" << endl;
+        throw(static_cast<int>(ExitValue::DivisionByZero));
     }
+    return (num1 / num2);
 }
 
 double Calculator::calculate(double num1, char charOperator, double num2) {
@@ -35,11 +34,12 @@ double Calculator::calculate(double num1, char charOperator, double num2) {
     case '/':
         return divide(num1, num2);
     case '*':
+    case 'x':
+    case 'X':
         return multiply(num1, num2);
     default: {
-        cout << "Unsupported operator: " << charOperator << endl
-             << "Exiting..." << endl;
-        exit(UnsupportedOperator);
+        cerr << "Unsupported operator: " << charOperator << endl;
+        throw(static_cast<int>(ExitValue::UnsupportedOperator));
     }
     }
 }
