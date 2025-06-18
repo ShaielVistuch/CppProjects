@@ -3,9 +3,10 @@
 #include <iostream>
 
 int main() {
-    const int count = 5;
-    int arr[count] = {};
-    returnArrayOfPrimes(count, arr);
-    printArrayContent(arr, count);
+    int count = 5;
+    count = getIntegerFromUser();
+    int* primeArrayPointer = (int*)(malloc(count * sizeof(int)));
+    returnArrayOfPrimes(count, primeArrayPointer);
+    printArrayContent(primeArrayPointer, count);
     return 0;
 }

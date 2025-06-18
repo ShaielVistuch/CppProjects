@@ -1,7 +1,6 @@
 #include "primeUtils.h"
 
 #include <cmath>
-#include <iostream>
 
 bool checkIfPrime(int number) {
     if (number <= 1) {
