@@ -49,6 +49,9 @@ bool Complex::operator==(const Complex& complexNumber2) const {
   return false;
 }
 bool Complex::operator==(double real2) const {
+  if (imaginary != 0) {
+    return false;
+  }
   if (!(real == real2)) {
     return false;
   }
@@ -62,6 +65,11 @@ Complex Complex::operator-(const double& realNumber) const {
 }
 Complex Complex::operator*(const double& realNumber) const {
   return Complex(real * realNumber, imaginary * realNumber);
+}
+Complex& Complex::operator=(double realNumber) {
+  real = realNumber;
+  imaginary = 0;
+  return *this;
 }
 Complex operator+(double realNumber, const Complex& complexNumber) {
   return Complex(complexNumber.getReal() + realNumber,
