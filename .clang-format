@@ -1,5 +1,5 @@
 ---
-IndentWidth: 4
+BasedOnStyle: LLVM
 ---
 Language: Cpp
 DerivePointerAlignment: false
