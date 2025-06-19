@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 
-using std::cerr;
 using std::cin;
 using std::cout;
 using std::endl;
@@ -37,13 +36,11 @@ int getNumberOfPrimesFromUser() {
     try {
         int numberOfPrimes = stoi(inputNumber);
         if (numberOfPrimes < 0) {
+            cout << "here";
             throw std::invalid_argument("Number entered is negative.");
         }
         return numberOfPrimes;
     } catch (std::invalid_argument& ex) {
-        cerr << "You have entered an invalid number" << endl
-             << ex.what() << endl
-             << "Exiting...";
-        throw ex;
+        throw std::exception("You have entered an invalid input.");
     }
 }
