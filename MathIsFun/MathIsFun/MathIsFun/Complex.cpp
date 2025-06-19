@@ -2,10 +2,18 @@
 
 using std::endl;
 
-double Complex::getReal() const { return real; }
-double Complex::getImaginary() const { return imaginary; }
-void Complex::setReal(int realArg) { real = realArg; }
-void Complex::setImaginary(int imaginaryArg) { imaginary = imaginaryArg; }
+double Complex::getReal() const {
+  return real;
+}
+double Complex::getImaginary() const {
+  return imaginary;
+}
+void Complex::setReal(int realArg) {
+  real = realArg;
+}
+void Complex::setImaginary(int imaginaryArg) {
+  imaginary = imaginaryArg;
+}
 Complex::Complex() {
   real = 0;
   imaginary = 0;

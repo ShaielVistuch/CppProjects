@@ -23,6 +23,4 @@ int main() {
 
   cout << "Testing + operator by adding second and fifth number:\n";
   cout << complexNum2 + complexNum5 << endl;
-  
 }
-
