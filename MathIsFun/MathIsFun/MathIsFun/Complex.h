@@ -1,6 +1,9 @@
 #pragma once
 
 #include <cmath>
+#include <iostream>
+
+using std::ostream;
 
 class Complex final {
 private:
@@ -8,11 +11,15 @@ private:
   int imaginary;
   void setReal(int real);
   void setImaginary(int imaginary);
+  double getReal() const;
+  double getImaginary() const;
 
 public:
   Complex();
   Complex(int realArg, int imaginaryArg = 0);
-  double getReal();
-  double getImaginary();
-  Complex operator+(Complex&);
+  Complex operator+(const Complex&) const;
+  Complex operator*(const Complex&) const;
+  Complex operator/(const Complex&) const;
+  Complex operator-(const Complex&) const;
+  friend ostream& operator<<(ostream& out, const Complex& complexNumber);
 };
