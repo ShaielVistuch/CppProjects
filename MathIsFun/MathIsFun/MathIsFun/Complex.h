@@ -21,5 +21,6 @@ public:
   Complex operator*(const Complex&) const;
   Complex operator/(const Complex&) const;
   Complex operator-(const Complex&) const;
+  Complex& operator=(const Complex&);
   friend ostream& operator<<(ostream& out, const Complex& complexNumber);
 };

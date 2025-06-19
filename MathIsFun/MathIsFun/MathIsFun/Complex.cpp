@@ -30,6 +30,11 @@ Complex Complex::operator/(const Complex& complexNumber2) const {
   return Complex(real - complexNumber2.getReal(),
                  imaginary - complexNumber2.getImaginary());
 }
+Complex& Complex::operator=(const Complex& complexNumber2) {
+  real = complexNumber2.getReal();
+  imaginary = complexNumber2.getImaginary();
+  return *this;
+}
 std::ostream& operator<<(std::ostream& out, const Complex& complexNumber) {
   out << complexNumber.real << " + " << complexNumber.imaginary << "i" << endl;
   return out;
