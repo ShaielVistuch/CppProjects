@@ -4,3 +4,6 @@ BasedOnStyle: LLVM
 Language: Cpp
 DerivePointerAlignment: false
 PointerAlignment: Left
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortBlocksOnASingleLine: Never
+AllowShortFunctionsOnASingleLine: None
