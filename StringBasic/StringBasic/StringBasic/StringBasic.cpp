@@ -10,13 +10,13 @@ StringBasic::StringBasic(const char charArray[]) {
     str = NULL;
   } else {
     // Adding 1 for null character
-    str = new char[sizeOfStr+1]{};
+    str = new char[sizeOfStr + 1]{};
     if (str != NULL) {
       while (i < sizeOfStr) {
         str[i] = charArray[i];
         i++;
       }
-      str[i] = '\0';
+      str[i] = NULL_TERMINATOR;
     }
   }
 }
@@ -30,11 +30,12 @@ std::ostream& operator<<(std::ostream& out, const StringBasic& stringBasic) {
   return out;
 }
 
-StringBasic& StringBasic::operator=(const char str2[]) {
+StringBasic& StringBasic::operator=(const char charArray[]) {
   delete[] this->str;
-  *this = StringBasic(str2);
+  *this = StringBasic(charArray);
   return *this;
 }
+
 StringBasic& StringBasic::operator=(const StringBasic& stringBasic2) {
   if (&stringBasic2 == this) {
     return *this;
@@ -42,6 +43,7 @@ StringBasic& StringBasic::operator=(const StringBasic& stringBasic2) {
   str = stringBasic2.str;
   return *this;
 }
+
 bool StringBasic::operator==(const StringBasic& stringBasic2) const {
   if (!(str == stringBasic2.str)) {
     return false;
@@ -49,14 +51,7 @@ bool StringBasic::operator==(const StringBasic& stringBasic2) const {
   return true;
 }
 
-bool StringBasic::operator==(char str2[]) const {
-  if (!(str == str2)) {
-    return false;
-  }
-  return true;
-}
-
-bool compareTwoCharArrays(char str1[], char str2[]) {
+bool StringBasic::areTwoCharArraysSame(const char str1[], const char str2[]) {
   int i = 0;
   while (str1[i] != NULL_TERMINATOR) {
     if (str1[i] != str2[i]) {
@@ -70,6 +65,20 @@ bool compareTwoCharArrays(char str1[], char str2[]) {
   }
   if (i == j) {
 
+    return true;
+  }
+  return false;
+}
+
+bool operator==(const char* charArray, const StringBasic& stringBasic) {
+  if (StringBasic::areTwoCharArraysSame(charArray, charArray)) {
+    return true;
+  }
+  return false;
+}
+
+bool StringBasic::operator==(char charArray[]) const {
+  if (StringBasic::areTwoCharArraysSame(charArray, charArray)) {
     return true;
   }
   return false;
