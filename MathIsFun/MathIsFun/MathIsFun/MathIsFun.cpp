@@ -33,16 +33,16 @@ int main() {
   Complex complexNum6 = complexNum2 + complexNum5 - complexNum5;
   cout << complexNum6 << endl;
 
-  cout << "Testing = operator by comparing result of previous test with second "
+  cout << "Testing == operator by comparing result of previous test with second "
           "number:"
        << endl;
   cout << ((complexNum6 == complexNum2)
-               ? "Result is same as second number, = returned True"
-               : "Result is same as second number, = returned False")
+               ? "Result is same as second number, == returned True"
+               : "Result is different from second number, == returned False")
        << endl
        << endl;
 
-  cout << "Testing == operator by comparing assigning second number to first "
+  cout << "Testing = operator by comparing assigning second number to first "
           "number adn printing first number:"
           "number:"
        << endl;
