@@ -28,10 +28,11 @@ int main() {
   // Deleting last element in list
   delete (myInt);
   printAllMemoryAllocations();
-  // Deleting remaining allocations
+  // Adding an allocation 
   int* myInt2 = (int*)new int;
   *myInt2 = 100;
   printAllMemoryAllocations();
+  // Deleting remaining allocations
   delete (myChar2);
   printAllMemoryAllocations();
   delete (myInt2);
