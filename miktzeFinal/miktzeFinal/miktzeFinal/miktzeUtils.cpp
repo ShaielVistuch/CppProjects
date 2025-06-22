@@ -47,6 +47,7 @@ void operator delete(void* ptr) {
   // If element to delete is the only one in the list
   if (currentNode->nextMetadata == nullptr) {
     globalFirstNodePtr = nullptr;
+    globalLastNodePtr = nullptr;
     free(ptr);
     return;
   }
@@ -60,6 +61,10 @@ void operator delete(void* ptr) {
   while (currentNode->address != ptr) {
     previousNode = currentNode;
     currentNode = currentNode->nextMetadata;
+  }
+  // If element to delete is the last one in the list
+  if (currentNode->nextMetadata == nullptr) {
+    globalLastNodePtr = previousNode;
   }
   previousNode->nextMetadata = currentNode->nextMetadata;
   free(ptr);

@@ -29,6 +29,11 @@ int main() {
   delete (myInt);
   printAllMemoryAllocations();
   // Deleting remaining allocations
+  int* myInt2 = (int*)new int;
+  *myInt2 = 100;
+  printAllMemoryAllocations();
   delete (myChar2);
+  printAllMemoryAllocations();
+  delete (myInt2);
   printAllMemoryAllocations();
 }
