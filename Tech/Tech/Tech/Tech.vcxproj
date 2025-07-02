@@ -131,6 +131,7 @@
   <ItemGroup>
     <ClInclude Include="MutexHandler.h" />
     <ClInclude Include="RegHandler.h" />
+    <ClInclude Include="TechErrors.h" />
     <ClInclude Include="TechUtils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

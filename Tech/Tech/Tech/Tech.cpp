@@ -3,25 +3,22 @@
 
 #include <iostream>
 #include <stdio.h>
+#include <stdexcept>
 #include <windows.h>
 
-using std::cout;
+using std::cerr;
 using std::endl;
+using std::runtime_error;
 
 HANDLE ghMutex;
 int main() {
-
-  MutexHandler myMutex{NULL, TRUE, (LPCWSTR) "MyManagmentProgram", &ghMutex};
-  if (ghMutex == NULL) {
-    cout << "An error ocured while creating MUTEX." << endl;
-    return 2;
-  }
-  if (GetLastError() == ERROR_ALREADY_EXISTS) {
-    cout << "Cannot run program, another instance is already running." << endl;
-    return 1;
-  }
+  try {
+  MutexHandler myMutex{NULL, TRUE, (LPCWSTR) "MyManagmentProgram"};
   MessageBox(NULL, L"MANAGMENT PROGRAM IS UP", L"Tech", MB_OK);
   setInRegistry();
-  Sleep(60 * 60 * 1000);
+  Sleep( 10 * 1000);
+  } catch (const runtime_error& ex) {
+    cerr << ex.what() << endl;
+  }
   return 0;
 } // myMutex.~MutexHandler() called

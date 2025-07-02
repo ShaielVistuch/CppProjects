@@ -3,53 +3,48 @@
 
 #include <iostream>
 #include <windows.h>
+#include "TechErrors.h"
 
 using std::cout;
 using std::endl;
 
-const char* pathToExe =
+const char* PATH_TO_EXE =
     "C:\\Users\\rinat\\shaiel\\CppProjects\\Tech\\Tech\\x64\\Debug\\Tech.exe";
-const char* registryPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Run";
-const char* name = "MyManagmentProgram";
+const char* REGISTRY_PATH = "Software\\Microsoft\\Windows\\CurrentVersion\\Run";
+const char* NAME = "MyManagmentProgram";
 int setInRegistry() {
   int openReturnVal;
-  HKEY key;
-  PHKEY pkey = &key;
 
   cout << "Starting" << endl;
 
   RegHandler myRegHandler{HKEY_CURRENT_USER,
-                          registryPath,
+                          REGISTRY_PATH,
                           0,
-                          KEY_SET_VALUE | KEY_QUERY_VALUE,
-                          pkey,
-                          &openReturnVal};
+                          KEY_SET_VALUE | KEY_QUERY_VALUE};
 
-  if (openReturnVal != ERROR_SUCCESS) {
-    cout << "Error in open" << endl;
-  }
   // Check if already set:
-  int queryReturnVal = RegQueryValueExA(key, name, NULL, NULL, NULL, NULL);
+  int queryReturnVal =
+      RegQueryValueExA(myRegHandler.m_key, NAME, NULL, NULL, NULL, NULL);
 
   if (queryReturnVal == ERROR_MORE_DATA) {
-    cout << "Error in query: Buffer to small to recieve data." << endl;
-    return 3;
+    throw RegQueryValueExAError(
+        "Error in query: Buffer to small to recieve data.");
   }
 
   if (queryReturnVal == ERROR_FILE_NOT_FOUND) {
-    cout << "Error in query: File not found." << endl;
+    cout << "File not found in registry. Setting it..." << endl;
     // If not, do:
-    int setReturnVal = RegSetValueExA(
-        key, name, 0, REG_SZ, (const BYTE*)pathToExe, strlen(pathToExe) + 1);
+    int setReturnVal = RegSetValueExA(myRegHandler.m_key, NAME, 0, REG_SZ,
+                       (const BYTE*)PATH_TO_EXE, strlen(PATH_TO_EXE) + 1);
     if (setReturnVal != ERROR_SUCCESS) {
-      cout << "Error in set" << endl;
-      return 2;
+      throw RegSetValueExAError(
+          "Error in setting file.");
     }
-  }
-
-  if (queryReturnVal != ERROR_SUCCESS) {
-    cout << "Error in query" << endl;
-    return 5;
+    cout << "Successfully placed file in destination!" << endl;
+    return 0;
+  } else if (queryReturnVal != ERROR_SUCCESS) {
+    throw RegQueryValueExAError(
+        "Error in query.");
   }
 
   cout << "An entry with this name already exists in the registry." << endl;

@@ -1,11 +1,10 @@
 #pragma once
 #include <iostream>
 #include <windows.h>
-class RegHandler {
-  PHKEY pkey;
 
+class RegHandler {
 public:
-  RegHandler(HKEY hKey, LPCSTR lpSubKey, DWORD ulOptions, REGSAM samDesired,
-             PHKEY phkResult, int* openReturnVal);
+  HKEY m_key;
+  RegHandler(HKEY hKey, LPCSTR lpSubKey, DWORD ulOptions, REGSAM samDesired);
   ~RegHandler();
 };
