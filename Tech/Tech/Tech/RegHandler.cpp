@@ -8,15 +8,14 @@ RegHandler::RegHandler(HKEY hKey, LPCSTR lpSubKey, DWORD ulOptions,
                        REGSAM samDesired) {
   long openReturnVal = RegOpenKeyExA(hKey, lpSubKey, 0, samDesired, &m_key);
   if (openReturnVal != ERROR_SUCCESS) {
-    cout << "Error in open" << endl;
-    throw RegOpenKeyExAError("Error opening file.");
+    throw RegOpenKeyExAError("Error opening registry.");
   }
 }
 bool RegHandler::queryValueExA(LPCSTR lpValueName, LPDWORD lpReserved,
-                               LPDWORD lpType, LPDWORD lpData,
+                               LPDWORD lpType, LPBYTE lpData,
                                LPDWORD lpcbData) {
   int queryReturnVal =
-      RegQueryValueExA(m_key, lpValueName, NULL, NULL, NULL, NULL);
+      RegQueryValueExA(m_key, lpValueName, lpReserved, lpType, lpData, lpcbData);
 
   if (queryReturnVal == ERROR_MORE_DATA) {
     throw RegQueryValueExAError(
@@ -44,4 +43,8 @@ void RegHandler::setValueExA(LPCSTR lpValueName, DWORD Reserved, DWORD dwType,
 }
 RegHandler::~RegHandler() {
   RegCloseKey(m_key);
+}
+
+HKEY RegHandler::getKey() {
+  return m_key;
 }

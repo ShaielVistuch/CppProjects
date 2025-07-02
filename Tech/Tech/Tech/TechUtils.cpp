@@ -12,7 +12,7 @@ const char* PATH_TO_EXE =
     "C:\\Users\\rinat\\shaiel\\CppProjects\\Tech\\Tech\\x64\\Debug\\Tech.exe";
 const char* REGISTRY_PATH = "Software\\Microsoft\\Windows\\CurrentVersion\\Run";
 const char* NAME = "MyManagmentProgram";
-int setInRegistry() {
+int setInRegistryIfNeeded() {
   int openReturnVal;
   cout << "Starting" << endl;
   RegHandler myRegHandler{HKEY_CURRENT_USER, REGISTRY_PATH, 0,

@@ -12,6 +12,9 @@ MutexHandler::MutexHandler(LPSECURITY_ATTRIBUTES lpMutexAttributes,
         "Cannot run program, another instance is already running.");
   }
 }
+HANDLE MutexHandler::getMutexHandle() {
+  return m_ghMutex;
+}
 MutexHandler::~MutexHandler() {
   CloseHandle(m_ghMutex);
 }
