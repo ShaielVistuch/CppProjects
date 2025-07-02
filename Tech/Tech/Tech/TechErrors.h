@@ -5,8 +5,7 @@ using std::runtime_error;
 
 class RegOpenKeyExAError : public runtime_error {
 public:
-  RegOpenKeyExAError(const std::string& error)
-      : runtime_error{error} {
+  RegOpenKeyExAError(const std::string& error) : runtime_error{error} {
   }
 };
 class CreateMutexError : public runtime_error {

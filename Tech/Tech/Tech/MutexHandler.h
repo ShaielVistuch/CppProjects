@@ -1,6 +1,6 @@
 #pragma once
-#include <windows.h>
 #include <iostream>
+#include <windows.h>
 
 using std::cout;
 using std::endl;
