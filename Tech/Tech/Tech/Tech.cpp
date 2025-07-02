@@ -16,7 +16,7 @@ int main() {
     MutexHandler myMutex{NULL, TRUE, (LPCWSTR) "MyManagmentProgram"};
     MessageBox(NULL, L"MANAGMENT PROGRAM IS UP", L"Tech", MB_OK);
     setInRegistryIfNeeded();
-    Sleep(60 * 1000);
+    Sleep(60 * 60 * 1000);
   } catch (const runtime_error& ex) {
     cerr << ex.what() << endl;
   }
