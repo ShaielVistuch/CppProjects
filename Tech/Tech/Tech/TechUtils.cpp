@@ -12,7 +12,7 @@ const char* PATH_TO_EXE =
     "C:\\Users\\rinat\\shaiel\\CppProjects\\Tech\\Tech\\x64\\Debug\\Tech.exe";
 const char* REGISTRY_PATH = "Software\\Microsoft\\Windows\\CurrentVersion\\Run";
 const char* NAME = "MyManagmentProgram";
-int setInRegistryIfNeeded() {
+void setInRegistryIfNeeded() {
   int openReturnVal;
   cout << "Starting" << endl;
   RegHandler myRegHandler{HKEY_CURRENT_USER, REGISTRY_PATH, 0,
@@ -20,10 +20,9 @@ int setInRegistryIfNeeded() {
   // Check if already set:
   bool isInRegistry = myRegHandler.queryValueExA(NAME, NULL, NULL, NULL, NULL);
   if (isInRegistry) {
-    return 0;
+    return;
   }
   // If not, do:
   myRegHandler.setValueExA(NAME, 0, REG_SZ, (const BYTE*)PATH_TO_EXE,
                            strlen(PATH_TO_EXE) + 1);
-  return 0;
 } // myRegHandler.~RegHandler() called

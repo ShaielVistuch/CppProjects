@@ -14,8 +14,8 @@ RegHandler::RegHandler(HKEY hKey, LPCSTR lpSubKey, DWORD ulOptions,
 bool RegHandler::queryValueExA(LPCSTR lpValueName, LPDWORD lpReserved,
                                LPDWORD lpType, LPBYTE lpData,
                                LPDWORD lpcbData) {
-  int queryReturnVal =
-      RegQueryValueExA(m_key, lpValueName, lpReserved, lpType, lpData, lpcbData);
+  int queryReturnVal = RegQueryValueExA(m_key, lpValueName, lpReserved, lpType,
+                                        lpData, lpcbData);
 
   if (queryReturnVal == ERROR_MORE_DATA) {
     throw RegQueryValueExAError(
