@@ -9,8 +9,8 @@ using std::cout;
 using std::endl;
 
 const char* PATH_TO_EXE =
-    "C:\\Users\\rinat\\shaiel\\CppProjects\\Tech\\Tech\\x64\\Debug\\Tech.exe";
-const char* REGISTRY_PATH = "Software\\Microsoft\\Windows\\CurrentVersion\\Run";
+    "<PATH to TECH.exe>";
+const char* REGISTRY_PATH = "<PATH>";
 const char* NAME = "MyManagmentProgram";
 void setInRegistryIfNeeded() {
   int openReturnVal;
